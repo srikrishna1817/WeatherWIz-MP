@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherWizard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4a90e2;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 10px;
+            display: block;
+            text-align: left;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #4a90e2;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #357abd;
+        }
+
+        #loading-weather {
+            display:none; 
+        }
+        
+        #error-message-weather {
+            color:red; 
+        }
+        
+        #weather-data, #forecast {
+            margin-top:20px; 
+            padding:15px; 
+            background-color:#f7f9fc; 
+            border-radius :8px; 
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container" id="weather-container" style="display:none;">
+       <h1>WeatherWizard</h1>
+       <form id="weather-form">
+           <label for="city">Enter City:</label>
+           <input type="text" id="city" required>
+
+           <label for="weather-option">Select Weather Option:</label>
+           <select id="weather-option">
+               <option value="current">Current Weather</option>
+               <option value="wind-speed">Wind Speed</option>
+               <option value="humidity">Humidity</option>
+               <option value="sunrise-sunset">Sunrise/Sunset</option>
+               <option value="forecast">5-Day Forecast</option>
+           </select>
+
+           <button type="submit">Get Weather</button>
+           <div id="loading-weather">Loading...</div>
+           <div id="error-message-weather"></div>
+       </form>
+
+       <div id="weather-data" style="display:none;">
+           <div id="location"><strong>Location:</strong> <span></span></div>
+           <div id="temperature"><strong>Temperature:</strong> <span></span></div>
+           <div id="description"><strong>Description:</strong> <span></span></div>
+       </div>
+
+       <div id="forecast" style="display:none;">
+           <h3>5-Day Forecast:</h3>
+           <p id="day1"></p>
+           <p id="day2"></p>
+           <p id="day3"></p>
+           <p id="day4"></p>
+           <p id="day5"></p>
+       </div>
+   </div>
+
+   <!-- Include the script for weather data -->
+   <script src='script.js'></script> <!-- Reference to the external JavaScript file -->
+</body>
+</html>

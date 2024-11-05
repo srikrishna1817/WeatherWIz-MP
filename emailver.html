@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4a90e2;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 10px;
+            display: block;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #4a90e2; /* Same color as in weather page */
+            color: white; /* Text color */
+            padding: 12px; /* Consistent padding */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Same font size */
+        }
+
+        button:hover {
+            background-color: #357abd; /* Darker shade on hover */
+        }
+
+        #loading {
+            display:none; 
+        }
+
+        #error-message {
+            color:red; 
+        }
+
+        #otp-section {
+             display:none; 
+         }
+
+         #otp-error-message {
+             color:red; 
+         }
+    </style>
+</head>
+<body>
+    <div class="container" id="email-verification-container">
+        <h1>Email Verification</h1>
+        <form id="email-form">
+            <label for="email">Enter your Email:</label>
+            <input type="email" id="email" required>
+            
+            <button type="submit">Send OTP</button>
+            
+            <div id="loading">Sending...</div>
+            <div id="error-message"></div>
+        </form>
+
+        <div id="otp-section" style="display:none;">
+            <label for="otp">Enter OTP:</label>
+            <input type="text" id="otp" required>
+            
+            <button id="verify-otp">Verify OTP</button> <!-- This button will trigger the redirection -->
+            
+            <div id="otp-error-message"></div>
+        </div>
+    </div>
+
+    <!-- Include the script for OTP verification -->
+    <script src='otpver.js'></script> <!-- Ensure this points to the correct location -->
+</body>
+</html>
