@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f4f8;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
             color: #333;
             margin: 0;
             padding: 0;
@@ -16,58 +16,93 @@
             align-items: center;
             height: 100vh;
         }
+
         .container {
             background-color: #ffffff;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            padding: 20px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 30px;
             max-width: 400px;
             width: 100%;
             text-align: center;
+            animation: fadeIn 1s ease;
         }
+
         h1 {
-            color: #4a90e2;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-        label {
+            color: #0072ff;
+            font-size: 32px;
+            margin-bottom: 25px;
             font-weight: bold;
+        }
+
+        label {
+            font-weight: 600;
             font-size: 16px;
             margin-top: 10px;
             display: block;
             text-align: left;
+            color: #333;
         }
+
         input {
             width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
             font-size: 16px;
+            transition: border-color 0.3s;
         }
+
+        input:focus {
+            border-color: #0072ff;
+            outline: none;
+        }
+
         button {
             width: 100%;
-            background-color: #4a90e2;
+            background-color: #0072ff;
             color: white;
-            padding: 12px;
+            padding: 14px;
             border: none;
-            border-radius: 5px;
-            font-size: 16px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
+
         button:hover {
-            background-color: #357abd;
+            background-color: #005bb5;
         }
-        #loading, #otp-section {
+
+        #loading {
             display: none;
+            margin: 15px 0;
+            font-size: 16px;
+            color: #666;
         }
+
         #error-message, #otp-error-message {
             color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        #otp-section {
+            display: none;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
-    <div class="container" id="email-verification-container">
+    <div class="container">
         <h1>Email Verification</h1>
         <form id="email-form">
             <label for="email">Enter your Email:</label>
@@ -76,6 +111,7 @@
             <div id="loading">Sending...</div>
             <div id="error-message"></div>
         </form>
+
         <div id="otp-section">
             <label for="otp">Enter OTP:</label>
             <input type="text" id="otp" required>
@@ -83,6 +119,7 @@
             <div id="otp-error-message"></div>
         </div>
     </div>
-    <script src="otpver.js"></script> <!-- Ensure this points to the correct location -->
+
+    <script src="otpver.js"></script>
 </body>
 </html>
