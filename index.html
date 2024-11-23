@@ -1,159 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WeatherWizard</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
 
-        .container {
-            background-color: #ffffff;
-            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-            padding: 30px;
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-            animation: fadeIn 1s ease;
-        }
+      .container {
+        background-color: #ffffff;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        padding: 30px;
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        animation: fadeIn 1s ease;
+      }
 
-        h1 {
-            color: #4a90e2;
-            font-size: 32px;
-            margin-bottom: 25px;
-            font-weight: bold;
-        }
+      h1 {
+        color: #4a90e2;
+        font-size: 32px;
+        margin-bottom: 25px;
+        font-weight: bold;
+      }
 
-        label {
-            font-weight: 600;
-            font-size: 16px;
-            margin-top: 10px;
-            display: block;
-            text-align: left;
-            color: #333;
-        }
+      label {
+        font-weight: 600;
+        font-size: 16px;
+        margin-top: 10px;
+        display: block;
+        text-align: left;
+        color: #333;
+      }
 
-        input, select {
-            width: 100%;
-            padding: 12px;
-            margin-top: 8px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
+      input,
+      select {
+        width: 100%;
+        padding: 12px;
+        margin-top: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+      }
 
-        input:focus, select:focus {
-            border-color: #4a90e2;
-            outline: none;
-        }
+      input:focus,
+      select:focus {
+        border-color: #4a90e2;
+        outline: none;
+      }
 
-        button {
-            width: 100%;
-            background-color: #4a90e2;
-            color: white;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+      button {
+        width: 100%;
+        background-color: #4a90e2;
+        color: white;
+        padding: 14px;
+        border: none;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
 
-        button:hover {
-            background-color: #357abd;
-        }
+      button:hover {
+        background-color: #357abd;
+      }
 
-        #loading {
-            display: none;
-            margin: 15px 0;
-            font-size: 16px;
-            color: #666;
-        }
+      #loading {
+        display: none;
+        margin: 15px 0;
+        font-size: 16px;
+        color: #666;
+      }
 
-        #error-message {
-            color: red;
-            display: none;
-            margin-top: 15px;
-            font-size: 14px;
-        }
+      #error-message {
+        color: red;
+        display: none;
+        margin-top: 15px;
+        font-size: 14px;
+      }
 
-        #weather-data, #forecast {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #f7f9fc;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
+      #weather-data,
+      #forecast {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #f7f9fc;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        display: none;
+      }
 
-        #weather-data span, #forecast p {
-            font-size: 18px;
-        }
+      #weather-data span,
+      #forecast p {
+        font-size: 18px;
+      }
 
-        h3 {
-            margin-bottom: 15px;
-            color: #333;
-            font-size: 24px;
-            font-weight: bold;
-        }
+      .weather-detail {
+        margin: 10px 0;
+        padding: 8px;
+        background-color: #fff;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+      h3 {
+        margin-bottom: 15px;
+        color: #333;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
         }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .aqi-level {
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-weight: bold;
+        display: inline-block;
+      }
+
+      .aqi-good { background-color: #a8e6cf; color: #1b4332; }
+      .aqi-moderate { background-color: #ffd3b6; color: #7f5539; }
+      .aqi-unhealthy { background-color: #ffaaa5; color: #9b2226; }
+      .aqi-very-unhealthy { background-color: #ff8b94; color: #641220; }
+      .aqi-hazardous { background-color: #6e1423; color: #ffffff; }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>WeatherWizard</h1>
-        <form id="weather-form">
-            <label for="city">Enter City:</label>
-            <input type="text" id="city" required>
+      <h1>WeatherWizard</h1>
+      <form id="weather-form">
+        <label for="city">Enter City:</label>
+        <input type="text" id="city" required />
 
-            <label for="weather-option">Select Weather Option:</label>
-            <select id="weather-option">
-                <option value="current">Current Weather</option>
-                <option value="wind-speed">Wind Speed</option>
-                <option value="humidity">Humidity</option>
-                <option value="sunrise-sunset">Sunrise/Sunset</option>
-                <option value="forecast">5-Day Forecast</option>
-            </select>
+        <label for="weather-option">Select Weather Option:</label>
+        <select id="weather-option">
+          <option value="current">Current Weather</option>
+          <option value="feels-like">Feels Like Temperature</option>
+          <option value="rain-probability">Rain Probability</option>
+          <option value="wind-speed">Wind Speed</option>
+          <option value="humidity">Humidity</option>
+          <option value="sunrise-sunset">Sunrise/Sunset</option>
+          <option value="air-quality">Air Quality Index</option>
+          <option value="forecast">5-Day Forecast</option>
+        </select>
 
-            <button type="submit">Get Weather</button>
-            <div id="loading">Loading...</div>
-            <div id="error-message">Unable to fetch weather data. Please check the city name.</div>
-        </form>
-
-        <div id="weather-data">
-            <div id="location"><strong>Location:</strong> <span></span></div>
-            <div id="temperature"><strong>Temperature:</strong> <span></span></div>
-            <div id="description"><strong>Description:</strong> <span></span></div>
+        <button type="submit">Get Weather</button>
+        <div id="loading">Loading...</div>
+        <div id="error-message">
+          Unable to fetch weather data. Please check the city name.
         </div>
+      </form>
 
-        <div id="forecast">
-            <h3>5-Day Forecast:</h3>
-            <p id="day1"></p>
-            <p id="day2"></p>
-            <p id="day3"></p>
-            <p id="day4"></p>
-            <p id="day5"></p>
-        </div>
+      <div id="weather-data">
+        <div id="location" class="weather-detail"><strong>Location:</strong> <span></span></div>
+        <div id="temperature" class="weather-detail"><strong>Temperature:</strong> <span></span></div>
+        <div id="feels-like" class="weather-detail"><strong>Feels Like:</strong> <span></span></div>
+        <div id="rain-prob" class="weather-detail"><strong>Rain Probability:</strong> <span></span></div>
+        <div id="air-quality" class="weather-detail"><strong>Air Quality Index:</strong> <span></span></div>
+        <div id="description" class="weather-detail"><strong>Description:</strong> <span></span></div>
+      </div>
+
+      <div id="forecast" class="hidden">
+        <div id="day1"></div>
+        <div id="day2"></div>
+        <div id="day3"></div>
+        <div id="day4"></div>
+        <div id="day5"></div>
+        <button id="redirect-button" class="hidden">Go to Events</button>
+      </div>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
